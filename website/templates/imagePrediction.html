@@ -1,0 +1,136 @@
+{% extends "base.html" %} {% block title %}Image Prediction{% endblock %} {% block content%}
+
+<style>
+    .button {
+      border: none;
+      border-radius: 5px;
+      color: white;
+      padding: 5px 15px;
+      text-align: right;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    .button2 {
+      border: none;
+      border-radius: 15px;
+      color: white;
+      padding: 15px 32px;
+      text-align: right;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 50px;
+      cursor: pointer;
+      
+    }
+
+    
+    .button1 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #008CBA;
+        float: left;
+    }
+
+    .button1:hover {
+        background-color: #008CBA;
+        color: white;
+        float: left;
+    }
+
+    .alignleft{
+        float: left;
+    }
+    .alignright{
+        float: right;
+        text-align: right;
+        display: inline;
+    }
+    .divider{
+        width:30px;
+    }
+
+    .column{
+        float:left;
+        width: 50%;
+        padding:10px;
+        
+    }
+    .row:after{
+        content:"";
+        display:table;
+        clear: both;
+    }
+
+</style>
+<body>
+    <br />
+    <h3>Image Prediction</h3>
+    <br />
+    
+    <div class="row">
+        <div class="column">
+        {% if filePath %}
+	    <div>
+		    <img src="{{ url_for('static', filename = filePath) }}" width="224" height="224">
+	    </div>
+        {% endif %}
+
+        <form method="POST" action="" enctype="multipart/form-data">
+            <br />
+            <p><input 
+                type="file" 
+                name="file" 
+                accept="image/*"></p>
+            <p><input class="button button1" 
+                id=Upload 
+                type="submit" 
+                value="Upload and Predict" 
+                name = Upload>
+            <div class="divider"></div>
+            <br />
+        </form>
+        <br />
+        <br />
+    
+        {% if predictedValue %}
+	    <div>
+
+            <h4>Predicted Condition: </h4>
+            <br />
+            <h5>{{ predictedValue }}</h5>
+		
+	    </div>
+        {% endif %}
+        </div>
+
+        <div class="column">
+            <div class="alignright;" id="patientInfo">
+                <h4> Patient's Name: {{patientFirstName}} {{patientLastName}}  </h4>
+                <br />
+                <h4> Patient's gender: {{ patientGender }}  </h4>
+                <br />
+                {% if patientNotes != ''%}
+                    <h4> Patient's notes: {{ patientNotes }}  </h4>
+                {% endif%}
+            </div>
+            <br />
+            <br />
+            <form method="POST" action="" >
+
+                <p><input class="button button1" 
+                    id=Save 
+                    type="submit" 
+                    value="Save Patient" 
+                    name = Save>
+                </p>
+            </form>
+
+        </div>
+    </div>
+</body>
+{% endblock %}

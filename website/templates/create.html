@@ -1,0 +1,95 @@
+{% extends "base.html" %} {% block title %}Create{% endblock %} {% block content%}
+
+<style>
+    .button {
+      border: none;
+      border-radius: 15px;
+      color: white;
+      padding: 15px 32px;
+      text-align: right;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    .button2 {
+      border: none;
+      border-radius: 15px;
+      color: white;
+      padding: 15px 32px;
+      text-align: right;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 50px;
+      cursor: pointer;
+    }
+
+    
+    .button1 {
+        background-color: white; 
+        color: black; 
+        border: 2px solid #008CBA;
+    }
+
+    .button1:hover {
+        background-color: #008CBA;
+        color: white;
+    }
+</style>
+
+<form method="POST">
+    <br />
+    <h3 align ="left">Create New Patient </h3>
+    <br />
+    <div class="form-group">
+        <label for="patientFirstName">First Name</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="patientFirstName" 
+            name="patientFirstName" 
+            placeholder="Enter patient's first name"
+            />
+    </div>
+    <div class="form-group">
+        <label for="patientLastName">Last Name</label>
+        <input 
+            type="text"
+            class="form-control" 
+            id="patientLastName" 
+            name="patientLastName" 
+            placeholder="Enter patient's last name"
+            />
+    </div>
+    <div class="form-group">
+        <label for="patientGender">Gender</label>
+        <input 
+            type="text"
+            class="form-control" 
+            id="patientGender" 
+            name="patientGender" 
+            placeholder="Enter patient's gender"
+            />
+    </div>
+    <div class="form-group">
+        <label for="patientNotes">Notes:</label>
+        <textarea 
+            type="text" 
+            class="form-control" 
+            id="patientNotes" 
+            name="patientNotes" 
+            placeholder=""
+            ></textarea>
+    </div>
+    <br />
+    <input 
+        class="button button1" 
+        id=submitPatient 
+        type="submit" 
+        value="Next" 
+        name = submitPatient></input>
+</form>
+{% endblock %}

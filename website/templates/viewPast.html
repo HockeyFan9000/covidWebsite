@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% block title %}Saved Patients{% endblock %}
+
+{% block content %}
+
+<style>
+    .left{
+        width: 39%;
+        float:left;
+        text-align: left;
+        display: inline;
+    }
+    .center{
+        width: 39%;
+        float:center;
+        text-align: left;
+        display: inline;
+    }
+    .right{
+        width: 39%;
+        float:right;
+        text-align: left;
+        display: inline;
+    }
+</style>
+
+<br />
+<h3>View Past Patients</h3>
+<br />
+<ul class="list-group list-group-flush" id="Patients">
+    {% for Patient in user.patients %}
+        <li class="list-group-item">
+            
+            <div style="display:inline">
+                <div class='left'>Patient Name: {{Patient.patientFirstName}} {{Patient.patientLastName}} </div>
+                <div class='center'>Patient Gender: {{Patient.gender}} </div>
+            </div>
+            <br />
+            <div style="display:inline">
+                {% if Patient.patientNotes !=''%}
+                <div class='left'>Notes: {{Patient.patientNotes}}</div>
+                {% endif %}
+                <!--{% if Patient.patientCondition %}-->
+                <div class='center'>Predicted Diagnosis: {{Patient.patientCondition}}</div>
+                <!--{% endif %}-->
+            </div>
+            <!---<button type="button" class="close" onClick="deltePatient({ Patient.id })">
+                <span aria-hiddef="true">&times;</span>
+            </button>---->
+        </li>
+
+    {% endfor %}
+</ul>
+
+
+{% endblock %}
