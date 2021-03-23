@@ -44,7 +44,7 @@ def imagePrediction():
                 gloabalFilePath = filePath
                 session['filePath'] = filePath
                 session['fileName'] = filename
-                print(full_path)
+                #print(full_path)
                 flash("Image uploaded succesfully", category='success')
                 #print(predict())
                 predictedValue = predict()
@@ -60,8 +60,8 @@ def imagePrediction():
                 new_patient = savePatient()
                 db.session.add(new_patient)
                 db.session.commit()
-                print(Patient.patientCondition)
-                print(Patient.patientFirstName)
+                #print(Patient.patientCondition)
+                #print(Patient.patientFirstName)
                 flash('Patient Added', category="success")
             #return render_template("imagePrediction.html",user=current_user,patientFirstName=patientFirstName,patientLastName=patientLastName, patientGender = patientGender, userID = current_user.get_id())
            

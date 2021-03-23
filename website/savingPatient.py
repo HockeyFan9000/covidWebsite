@@ -10,19 +10,19 @@ from .predictionAlgo import predict
 
 def savePatient():
     patientFirstName = session.get("firstName")
-    print('Patient First Name:' + patientFirstName)
+    #print('Patient First Name:' + patientFirstName)
     
     patientLastName = session.get("lastName")
-    print("Patient Last Name: " + patientLastName)
+    #print("Patient Last Name: " + patientLastName)
 
     patientGender = session.get("gender")
-    print("Patient Gender: " + patientGender)
+    #print("Patient Gender: " + patientGender)
     
     patientNotes = session.get("notes")
     
 
     patientCondition = session.get("patientConditon")
-    print('Patient Condition: ' + patientCondition)
+    #print('Patient Condition: ' + patientCondition)
     
 
 

@@ -9,14 +9,14 @@ create_blueprint = Blueprint('create', __name__)
 @login_required
 def create():
     if request.method == 'POST':
-        print("Posted")
+        #print("Posted")
         if request.form.get("submitPatient"):
             patientFirstName = request.form.get('patientFirstName')
             patientLastName = request.form.get('patientLastName')
             patientGender = request.form.get('patientGender')
             patientNotes = request.form.get('patientNotes')
 
-            print("Got Patient")
+            #print("Got Patient")
 
             if len(patientFirstName) < 2:
                 flash('Name needs to be longer than 1', category = 'error')

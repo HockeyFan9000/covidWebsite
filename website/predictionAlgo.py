@@ -17,14 +17,14 @@ def predict():
     imgPath2 = os.path.join(path, fileName)
 
     img = cv2.imread(imgPath2)
-    img = cv2.resize(img,(128,128))
+    img = cv2.resize(img,(224,224))
 
-    img = np.reshape(img,[1,128,128,3])
+    img = np.reshape(img,[1,224,224,3])
     img = img/255
 
     pred = np.argmax(model.predict(img), axis=-1)
 
     predictedCondition = catigories[int(pred)]
-    print(predictedCondition)
+    #print(predictedCondition)
 
     return predictedCondition
