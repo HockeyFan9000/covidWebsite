@@ -18,7 +18,7 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     app.config['UPLOAD_PATH']  = 'website/static/uploads/'
     app.config['MAX_CONTENT_PATH'] = 1024 * 1024
-    app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png','jpeg']
+    app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png','.jpeg']
 
     db.init_app(app)
     
