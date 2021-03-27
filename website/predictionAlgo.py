@@ -3,7 +3,6 @@ from keras.models import load_model
 import cv2
 import os
 import numpy as np 
-import matplotlib.pyplot as plt
 
 def predict():
     
