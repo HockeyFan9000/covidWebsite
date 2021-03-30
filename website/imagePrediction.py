@@ -58,7 +58,7 @@ def imagePrediction():
             if patientCondition !='':
                 filePath = session.get('filePath')
                 fileName = session.get('fileName')
-                path = 'website/static/uploads/'
+                path = '/home/JoshuaShunk/covidWebsite/website/static/uploads'
                 print(os.path.join(path, fileName))
                 os.remove(os.path.join(path, fileName))
                 new_patient = savePatient()
