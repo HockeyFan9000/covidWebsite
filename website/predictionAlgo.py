@@ -11,7 +11,7 @@ def predict():
     catigories = ['Covid 19 Pneumonia', 'Normal', 'Viral Pneumonia']
     filePath = session.get('filePath')
     fileName = session.get('fileName')
-    path = 'website/static/uploads/'
+    path = '/home/JoshuaShunk/covidWebsite/website/static/uploads'
 
     imgPath2 = os.path.join(path, fileName)
 
