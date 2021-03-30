@@ -56,13 +56,19 @@ def imagePrediction():
         if request.form.get("Save"):
             patientCondition = session.get('patientConditon')
             if patientCondition !='':
-                filePath = session.get("filePath")
+                filePath = session.get('filePath')
+                fileName = session.get('fileName')
+                path = 'website/static/uploads/'
+                print(os.path.join(path, fileName))
+                os.remove(os.path.join(path, fileName))
                 new_patient = savePatient()
                 db.session.add(new_patient)
                 db.session.commit()
                 #print(Patient.patientCondition)
                 #print(Patient.patientFirstName)
                 flash('Patient Added', category="success")
+            else:
+                flash('Please upload and predict an image to save a patient',catigory="error")
             #return render_template("imagePrediction.html",user=current_user,patientFirstName=patientFirstName,patientLastName=patientLastName, patientGender = patientGender, userID = current_user.get_id())
            
     return render_template("imagePrediction.html",user=current_user,patientFirstName=patientFirstName,patientLastName=patientLastName,patientNotes = patientNotes, patientGender = patientGender, userID = current_user.get_id())
