@@ -16,8 +16,8 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'a29d514860ba77c0bf87e1dbe6d13f22414559fc06a17c60f7e0c44b022b4785'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
-    app.config['UPLOAD_PATH']  = '/home/JoshuaShunk/covidWebsite/website/static/uploads/'
-    #app.config['UPLOAD_PATH']  = 'website/static/uploads/'
+    #app.config['UPLOAD_PATH']  = '/home/JoshuaShunk/covidWebsite/website/static/uploads/'
+    app.config['UPLOAD_PATH']  = 'website/static/uploads/'
     app.config['MAX_CONTENT_PATH'] = 1024 * 1024
     app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png','.jpeg','.webp']
 

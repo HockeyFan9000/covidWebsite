@@ -8,17 +8,17 @@ import os
 import imghdr
 from .predictionAlgo import predict
 from .savingPatient import savePatient
+import pathlib
 
 
 gloabalFilePath = '' 
 
 image_blueprint = Blueprint('imagePrediction', __name__)
-
 @image_blueprint.route('/imagePrediction',methods=['GET', 'POST'])
 @login_required
 def imagePrediction():
     
-    flash("Currently only .png, .jpg, and .webp files supported", category='warning')
+
 
     #fileName =''
     #target = os.path.join(app_root, 'static/img/')
@@ -56,20 +56,30 @@ def imagePrediction():
             else:
                 flash("Please upload a photo", category='error')
         if request.form.get("Save"):
-            patientCondition = session.get('patientConditon')
-            if patientCondition !='':
+            
+            if session.get('patientConditon') is not None:
+                patientCondition = session.get('patientConditon')
                 filePath = session.get('filePath')
                 fileName = session.get('fileName')
-                path = '/home/JoshuaShunk/covidWebsite/website/static/uploads'
-                #path = 'website/static/uploads/'
-                print(os.path.join(path, fileName))
-                os.remove(os.path.join(path, fileName))
-                new_patient = savePatient()
-                db.session.add(new_patient)
-                db.session.commit()
-                #print(Patient.patientCondition)
-                #print(Patient.patientFirstName)
-                flash('Patient Added', category="success")
+                #path = '/home/JoshuaShunk/covidWebsite/website/static/uploads'
+                path = 'website/static/uploads/'
+
+                imgLocation = os.path.join(path, fileName)
+                print(imgLocation)
+                file = pathlib.Path(imgLocation)
+
+                if file.exists ():
+                
+                    print(os.path.join(path, fileName))
+                    os.remove(os.path.join(path, fileName))
+                    new_patient = savePatient()
+                    db.session.add(new_patient)
+                    db.session.commit()
+                    #print(Patient.patientCondition)
+                    #print(Patient.patientFirstName)
+                    flash('Patient Added', category="success")
+                else:
+                    flash('Please upload and predict a photo', category="error")
             else:
                 flash('Please upload and predict an image to save a patient',catigory="error")
             #return render_template("imagePrediction.html",user=current_user,patientFirstName=patientFirstName,patientLastName=patientLastName, patientGender = patientGender, userID = current_user.get_id())

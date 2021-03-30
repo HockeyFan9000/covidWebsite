@@ -43,6 +43,7 @@ def create():
                 else:
                     session["notes"] = 'None'
                 session["user_id"] = current_user.id
+                flash("Currently only .png, .jpg, and .webp files supported", category='warning')
                 return redirect(url_for('imagePrediction.imagePrediction'))
                 
 
