@@ -61,8 +61,8 @@ def imagePrediction():
                 patientCondition = session.get('patientConditon')
                 filePath = session.get('filePath')
                 fileName = session.get('fileName')
-                #path = '/home/JoshuaShunk/covidWebsite/website/static/uploads'
-                path = 'website/static/uploads/'
+                path = '/home/JoshuaShunk/covidWebsite/website/static/uploads'
+                #path = 'website/static/uploads/'
 
                 imgLocation = os.path.join(path, fileName)
                 print(imgLocation)
