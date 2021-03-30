@@ -18,7 +18,7 @@ image_blueprint = Blueprint('imagePrediction', __name__)
 @login_required
 def imagePrediction():
     
-    flash("Currently only .png and .jpg files supported", category='warning')
+    flash("Currently only .png, .jpg, and .webp files supported", category='warning')
 
     #fileName =''
     #target = os.path.join(app_root, 'static/img/')
