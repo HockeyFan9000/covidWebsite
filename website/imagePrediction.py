@@ -18,6 +18,8 @@ image_blueprint = Blueprint('imagePrediction', __name__)
 @login_required
 def imagePrediction():
     
+    flash("Currently only .png and .jpg files supported", category='warning')
+
     #fileName =''
     #target = os.path.join(app_root, 'static/img/')
     
@@ -59,6 +61,7 @@ def imagePrediction():
                 filePath = session.get('filePath')
                 fileName = session.get('fileName')
                 path = '/home/JoshuaShunk/covidWebsite/website/static/uploads'
+                #path = 'website/static/uploads/'
                 print(os.path.join(path, fileName))
                 os.remove(os.path.join(path, fileName))
                 new_patient = savePatient()
