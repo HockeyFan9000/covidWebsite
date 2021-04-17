@@ -1,6 +1,96 @@
 {% extends "base.html" %} {% block title %}Sign Up{% endblock %}
 
 {% block content %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+  <link href='https://fonts.googleapis.com/css?family=IBM Plex Mono' rel='stylesheet'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+</head>
+<body>
+  
+  <form class="login-form" method="POST">
+    <h1>Sign Up</h1>
+
+    <div class="txtb">
+      <input 
+        type="email"
+        id="email"
+        name="email"/>
+      <span data-placeholder="Email"></span>
+    </div>
+
+    <div class="txtb left">
+        <input 
+          type="text" 
+          id="firstName" 
+          name="firstName" />
+        <span data-placeholder="First name"></span>
+    </div>
+
+    <div class="txtb right">
+      <input 
+          type="text" 
+          id="lastName" 
+          name="lastName"/>
+      <span data-placeholder="Last name"></span>
+    </div>
+    <br />
+    <br />
+    <br />
+
+    <div class="txtb">
+      <input 
+        type="password"
+        id="password1"
+        name="password1"/>
+      <span data-placeholder="Password"></span>
+    </div>
+
+    <div class="txtb">
+      <input 
+        type="password" 
+        id="password2" 
+        name="password2" 
+            />
+      <span data-placeholder="Confirm Password"></span>
+    </div>
+
+    <!---<input type="submit" class="logbtn" value="Login">-->
+    <button type="submit" class="logbtn" value="sign-up">Sign up</button>
+
+    <div class="bottom-text">
+      Already have an account? <a href="/login">Login</a>
+    </div>
+
+  </form>
+
+  <script type="text/javascript">
+  $(".txtb input").on("focus",function(){
+    $(this).addClass("focus");
+  });
+
+  $(".txtb input").on("blur",function(){
+    if($(this).val() == "")
+    $(this).removeClass("focus");
+  });
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+<!---
 <form method="POST">
     <br />
     <h3 align ="left">Sign Up</h3>
@@ -57,5 +147,11 @@
     </div>
     <br />
     <button type ="submit" class="btn btn-primary">Submit</button>
+
+    <div>
+        Already have an account? <a href="/login">Login</a>
+    </div>
+
 </form>
+-->
 {% endblock %}

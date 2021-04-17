@@ -2,54 +2,70 @@
 
 {% block content %}
 
-<style>
-    .left{
-        width: 39%;
-        float:left;
-        text-align: left;
-        display: inline;
-    }
-    .center{
-        width: 39%;
-        float:center;
-        text-align: left;
-        display: inline;
-    }
-    .right{
-        width: 39%;
-        float:right;
-        text-align: left;
-        display: inline;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/viewPast.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" 
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" 
+        crossorigin="anonymous">
+</head>
+<body style="background-color:white;">
+    <br />
+    <br />
+    <div style="display:inline">
+        <div class='left'>
+            <h3>View Past Patients</h3>
+        </div>
+    
+    </div>
+    <br />
+    <div style="display:inline">
 
-<br />
-<h3>View Past Patients</h3>
-<br />
-<ul class="list-group list-group-flush" id="Patients">
-    {% for Patient in user.patients %}
-        <li class="list-group-item">
-            
-            <div style="display:inline">
-                <div class='left'>Patient Name: {{Patient.patientFirstName}} {{Patient.patientLastName}} </div>
-                <div class='center'>Patient Gender: {{Patient.gender}} </div>
-            </div>
-            <br />
-            <div style="display:inline">
-                {% if Patient.patientNotes !=''%}
-                <div class='left'>Notes: {{Patient.patientNotes}}</div>
-                {% endif %}
-                <!--{% if Patient.patientCondition %}-->
-                <div class='center'>Predicted Diagnosis: {{Patient.patientCondition}}</div>
-                <!--{% endif %}-->
-            </div>
-            <!---<button type="button" class="close" onClick="deltePatient({ Patient.id })">
-                <span aria-hiddef="true">&times;</span>
-            </button>---->
-        </li>
+        <div class='right'>
+        <form action="" method="POST">
+            <input name="patientSearch" type="search" id="patientSearch" placeholder="Patient Name">
+            <i class="fa fa-search"></i>
+          </form>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <ul class="list-group list-group-flush" id="Patients">
+        {% for Patient in user.patients %}
+            <li class="list-group-item">
+                <div class='delete'> 
+                    <button type="button" class="close" onClick="deletePatient({{ Patient.id }})">
+                        <span aria-hidden="true">
+                            &times;
+                        </span>
+                    </button>
+                </div>
+                <div style="display:inline">
+                    <div class='left'>Patient Name: {{Patient.patientFirstName}} {{Patient.patientLastName}} </div>
+                    <div class='center'>Patient Gender: {{Patient.gender}} </div>
+                </div>
+                <br />
+                <div style="display:inline">
+ 
+                    <div class='left'>Notes: {{Patient.patientNotes}}</div>
 
-    {% endfor %}
-</ul>
+                    <div class='center'>Predicted Diagnosis: {{Patient.patientCondition}}</div>
+  
+                </div>
+
+            </li>
+    
+        {% endfor %}
+    </ul>
+  
+  
+</body>
+</html>
 
 
 {% endblock %}

@@ -11,7 +11,8 @@ def home():
         if request.form.get("createButton"):
             return redirect(url_for('create.create'))
         elif request.form.get("viewButton"):
-            return render_template("viewPast.html",user=current_user)
+            return redirect(url_for('viewPast.viewPast'))
+            #return render_template("viewPast.html",user=current_user)
 
     return render_template("home.html",user=current_user)
 

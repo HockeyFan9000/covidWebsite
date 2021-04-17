@@ -11,7 +11,7 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         password =request.form.get('password')
-
+ 
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
@@ -40,7 +40,7 @@ def sign_up():
         lastName = request.form.get('lastName')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
-    
+ 
         user = User.query.filter_by(email=email).first()
         if user:
             flash('Email already exists, please sign in', category='error')
