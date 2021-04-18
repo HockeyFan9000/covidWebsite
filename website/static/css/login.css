@@ -29,6 +29,11 @@ body{
   font-family:'IBM Plex Mono'
 }
 
+.versionLable{
+  text-align: center;
+  font-family:'IBM Plex Mono'
+}
+
 .txtb{
   border-bottom: 2px solid #adadad;
   position: relative;

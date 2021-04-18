@@ -17,11 +17,7 @@ image_blueprint = Blueprint('imagePrediction', __name__)
 @image_blueprint.route('/imagePrediction',methods=['GET', 'POST'])
 @login_required
 def imagePrediction():
-    
 
-
-    #fileName =''
-    #target = os.path.join(app_root, 'static/img/')
     
     patientFirstName = session.get("firstName")
     patientLastName = session.get("lastName")

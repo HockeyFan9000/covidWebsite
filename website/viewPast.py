@@ -26,7 +26,7 @@ def delete_patient():
         if patient.user_id == current_user.id:
             db.session.delete(patient)
             db.session.commit()
-            flash(f'Patient: {Patient.patientFirstName} deleted', category="success")
+            flash(f'Patient deleted', category="success")
         else:
             flash(f'Patient: {Patient.patientFirstName} not deleted', category="error")
     else:
