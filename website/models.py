@@ -1,7 +1,8 @@
-from . import db 
+from . import db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 from werkzeug.utils import secure_filename
+
 
 class Patient(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -11,8 +12,9 @@ class Patient(db.Model):
     patientNotes = db.Column(db.String(100000))
     patientCondition = db.Column(db.String(300))
     patientDate = db.Column(db.DateTime(timezone=True), default=func.now())
-    
+
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
